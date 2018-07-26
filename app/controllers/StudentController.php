@@ -94,7 +94,6 @@ class StudentController extends \BaseController {
 
 		$student_issued_books = Logs::select('book_issue_id', 'issued_at')
 			->where('student_id', '=', $id)
-			->orderBy('created_at', 'desc')
 			->take($student->books_issued)
 			->get();
 

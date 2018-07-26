@@ -33,7 +33,7 @@ class StudentController extends \BaseController {
 			'rejected'	=> 0
 		);
 
-		$students = Student::select('student_id', 'first_name', 'last_name', 'category', 'roll_num', 'branch', 'books_issued')
+		$students = Student::select('student_id', 'first_name', 'last_name', 'roll_num', 'branch', 'books_issued')
 			->where($conditions)
 			->orderBy('student_id');
 
@@ -68,10 +68,6 @@ class StudentController extends \BaseController {
 			throw new Exception('Invalid Student ID');
 		}
 
-		$student->year = (int)substr($student->year, 2, 4);
-
-		$student_category = StudentCategories::find($student->category);
-		$student->category = $student_category->category;
 
 		$student_branch = Branch::find($student->branch);
 		$student->branch = $student_branch->branch;

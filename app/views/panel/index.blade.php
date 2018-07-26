@@ -12,12 +12,12 @@
         <div class="btn-box-row row-fluid">
             <button class="btn-box big span4 homepage-form-box" id="findbookbox">
                 <i class="icon-list"></i>
-                <b>Find Book</b>
+                <b>Find Book by Name</b>
             </button>
 
             <button class="btn-box big span4 homepage-form-box" id="findissuebox">
                 <i class="icon-book"></i>
-                <b>Find Book Issue</b>
+                <b>Find Book by ID</b>
             </button>
 
             <button class="btn-box big span4 homepage-form-box" id="findstudentbox">
@@ -97,6 +97,7 @@
 @section('custom_bottom_script')
 <script type="text/javascript">
     var branches_list = {{ json_encode($branch_list) }};
+	var categories_list = {{ json_encode($categories_list) }};
 </script>
 
 <script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.mainpage.js"></script>
