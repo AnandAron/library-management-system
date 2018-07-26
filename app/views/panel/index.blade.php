@@ -97,7 +97,7 @@
 @section('custom_bottom_script')
 <script type="text/javascript">
     var branches_list = {{ json_encode($branch_list) }};
-	var categories_list = {{ json_encode($categories_list) }};
+	var categories_list = {{ json_encode($categories_list) }}
 </script>
 
 <script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.mainpage.js"></script>

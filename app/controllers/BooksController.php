@@ -192,8 +192,7 @@ class BooksController extends \BaseController {
 
 		$student_data->roll_num = $roll_num;
 
-		$student_data->category = StudentCategories::find($student_data->category)
-			->category;
+		
 		$issue->student = $student_data;
 
 
