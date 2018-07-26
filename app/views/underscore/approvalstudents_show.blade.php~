@@ -5,6 +5,7 @@ for(var i=0; i<branches_list.length; i++){
 		break;
 	}
 }
+ */
 %>
 
 <tr data-student-id="<%= obj.student_id %>">

@@ -26,6 +26,7 @@
                         <th>Last Name</th>
                         <th>Roll Number</th>
                         <th>Branch</th>
+					<th>Email ID</th>
                         <th>Books Issued</th>
                     </tr>
                 </thead>

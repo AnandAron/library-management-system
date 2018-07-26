@@ -42,7 +42,25 @@
 								
 								
 							</div>
-					
+						</div>
+						<div class="control-group">
+							<div class="controls row-fluid">
+								<input class="span8" type="email" placeholder="Email ID" name="email" value="{{ Input::old('email') }}" /> 
+								<select class="span4" style="margin-bottom: 0;" name="category">
+									@foreach($student_categories_list as $student_category)
+				                        <option value="{{ $student_category->cat_id }}">{{ $student_category->category }}</option>
+				                    @endforeach
+								</select>
+
+								@if($errors->has('email'))
+									{{ $errors->first('email')}}
+								@endif
+								@if($errors->has('category'))
+									{{ $errors->first('category')}}
+								@endif
+							</div>
+						</div>
+					</div>
 					<div class="module-foot">
 						<div class="control-group">
 							<div class="controls clearfix">

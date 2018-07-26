@@ -2,7 +2,14 @@ function loadResults(){
     var url = config.path.ajax 
             + "/student/create?branch=" + $('#branch_select').val();
 
- 
+    if($('#year_select').val() != 0){
+        url += "&year=" + $('#year_select').val();
+    }
+
+    if($('#category_select').val() != 0){
+        url += "&category=" + $('#category_select').val();
+    }
+
     var table = $('#students-table');
     
     var default_tpl = _.template($('#allstudents_show').html());
@@ -33,7 +40,13 @@ $(document).ready(function(){
         loadResults();
     });
 
- 
+    $("#category_select").change(function(){
+        loadResults();
+    });
+
+    $("#year_select").change(function(){
+        loadResults();
+    });
     
     loadResults();
 

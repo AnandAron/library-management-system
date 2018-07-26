@@ -1,0 +1,6 @@
+<?php
+
+define("MYSQL_HOSTNAME", "localhost");
+define("MYSQL_DATABASE", "tbl");
+define("MYSQL_USERNAME", "root");
+define("MYSQL_PASSWORD", "anand@mysql123");
