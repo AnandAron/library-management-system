@@ -1,3 +1,35 @@
+var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
+function loadJsonData(){
+	var client = new HttpClient();
+if(document.getElementById('isbn-af').value==""){window.alert("Invalid Data");}
+else{
+client.get('https://www.googleapis.com/books/v1/volumes?q=isbn:'+document.getElementById('isbn-af').value, function(response) {
+	var res=JSON.parse(response);
+	var i=0;
+	var auth="";	
+	for (i=0;i<res.items[0].volumeInfo.authors.length;i++){
+		if (i!=0) {auth=auth+" , ";}
+		auth=auth+res.items[0].volumeInfo.authors[i];
+	
+	}
+	document.getElementById("author-af").value=auth;
+document.getElementById("title-af").value=res.items[0].volumeInfo.title;
+document.getElementById("desc-af").value=res.items[0].volumeInfo.description;
+    
+});
+}
+}
 function loadResults(){
 
     var url = config.path.ajax 
@@ -51,7 +83,7 @@ $(document).ready(function(){
         sendJSON.category = f$('select[data-form-field~=category]').val();
         sendJSON.number = 1;
 
-        if(sendJSON.isbn == "" || sendJSON.title == "" || sendJSON.author == "" || sendJSON.description == "" || sendJSON.book_id == null){
+        if(sendJSON.isbn == "" || sendJSON.title == "" || sendJSON.author == "" || sendJSON.description == "" || sendJSON.book_id == ""){
             module_body.prepend(templates.alert_box( {type: 'danger', message: 'Book Details Not Complete'} ));
             send_flag = false;
         }
