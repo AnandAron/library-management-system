@@ -98,6 +98,11 @@ $(document).ready(function(){
                 url : config.path.ajax + '/books',
                 success: function(data) {                    
                     module_body.prepend(templates.alert_box( {type: 'success', message: data} ));
+				document.getElementById("author-af").value="";
+				document.getElementById("title-af").value="";
+				document.getElementById("desc-af").value="";
+				document.getElementById("isbn-af").value="";
+				document.getElementById("book_id-af").value="";
                 },
                 error: function(xhr,status,error){
                     var err = eval("(" + xhr.responseText + ")");

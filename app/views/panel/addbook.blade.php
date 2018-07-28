@@ -23,7 +23,7 @@
 			<div class="control-group">
                     <label class="control-label">Book ID</label>
                     <div class="controls">
-                        <input type="text" data-form-field="book_id" placeholder="Enter Book ID.." class="span8">
+                        <input type="text" data-form-field="book_id" placeholder="Enter Book ID.." class="span8" id="book_id-af">
                     </div>
                 </div>
 
