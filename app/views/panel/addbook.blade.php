@@ -59,12 +59,7 @@
                     </div>
                 </div>
 
-                <div class="control-group">
-                    <label class="control-label">Number of issues</label>
-                    <div class="controls">
-                        <input type="number" data-form-field="number" placeholder="How many issues are there?" class="span8">
-                    </div>
-                </div>
+                
                 <div class="control-group">
                     <div class="controls">
                         <button type="button" class="btn btn-inverse" id="addbooks">Add Books</button>
