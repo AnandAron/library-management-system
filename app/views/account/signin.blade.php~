@@ -49,7 +49,7 @@ function hello(){var pswd = prompt("Please enter your pswd");
 						
 						<div id="hide"></div>
 					</div>
-				</form><div class="pull-right" style="padding:10px;">
+				</form><div class="pull-right" style="padding:30px;">
 				<button class="btn" onclick="hello()">Admin</button></div>
 			</div>
 			
