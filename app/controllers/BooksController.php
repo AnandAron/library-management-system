@@ -243,5 +243,11 @@ class BooksController extends \BaseController {
 		return View::make('public.book-search')
 			->with('categories_list', $db_control->categories_list);
     }
+	public function renderAddCategory() {
+        $db_control = new HomeController();
+
+        return View::make('panel.addcategory')
+            ->with('categories_list', $db_control->categories_list);
+    }
 
 }

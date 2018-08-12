@@ -101,6 +101,8 @@ $(document).ready(function(){
 				document.getElementById("author-af").value="";
 				document.getElementById("title-af").value="";
 				document.getElementById("desc-af").value="";
+				document.getElementById("isbn-af").value="";
+				document.getElementById("book_id-af").value="";
                 },
                 error: function(xhr,status,error){
                     var err = eval("(" + xhr.responseText + ")");

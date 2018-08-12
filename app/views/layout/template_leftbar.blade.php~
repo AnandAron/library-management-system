@@ -36,11 +36,6 @@
                     <i class="menu-icon icon-list-ul"></i>View all books currently issued
                 </a>
             </li>
-		  <li>
-                <a href="{{ URL::route('add-category') }}">
-                    <i class="menu-icon icon-list-ul"></i>Add category
-                </a>
-            </li>
         </ul>
         
         <ul class="widget widget-menu unstyled">

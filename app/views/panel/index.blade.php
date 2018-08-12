@@ -61,11 +61,11 @@
             
             <div class="module" style="display: none;">
                 <div class="module-body">
-                    <form class="form-horizontal row-fluid" id="findissueform">
+                    <form class="form-horizontal row-fluid" id="findissueform" onsubmit="return false;">
                         <div class="control-group">
                             <label class="control-label">Enter Book ID</label>
                             <div class="controls">
-                                <input type="number" placeholder="" class="span9">
+                                <input type="text" placeholder="" class="span9">
                                 <a class="btn homepage-form-submit">Submit</a>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
 
             <div class="module" style="display: none;">
                 <div class="module-body">
-                    <form class="form-horizontal row-fluid" id="findstudentform">
+                    <form class="form-horizontal row-fluid" id="findstudentform"  onsubmit="return false;">
                         <div class="control-group">
                             <label class="control-label">Enter Student ID</label>
                             <div class="controls">
