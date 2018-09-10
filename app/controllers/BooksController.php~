@@ -229,6 +229,12 @@ class BooksController extends \BaseController {
         return View::make('panel.addbook')
             ->with('categories_list', $db_control->categories_list);
     }
+	public function renderDeleteBooks() {
+        $db_control = new HomeController();
+
+        return View::make('panel.deletebook')
+            ->with('categories_list', $db_control->categories_list);
+    }
 
     public function renderAllBooks() {
         $db_control = new HomeController();

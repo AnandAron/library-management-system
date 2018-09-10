@@ -14,18 +14,22 @@
 
                 <div class="control-group">
                     <label class="control-label"><b>Categories</b></label>
-                    <div class="controls">
+                     <div class="controls">
+                    <table class="table table-striped table-bordered table-condensed">
                            @foreach($categories_list as $category)
-                                <p>{{ $category->category }}</p>
+                                <tr>
+                                <td>{{ $category->category }}</td>
+                                
+                                <td><button type="button" class="btn" id="{{ $category->id }}" ><a href="http://localhost:8000/delete-category/{{$category->id}}">Delete</a></button></td>
+                                </tr>
                             @endforeach
-                        
-                    </div>
-                <div class="controls">
-                        <input type="text" id="cat-af" data-form-field="cat" placeholder="Enter new Category.." class="span8">
-                    </div>
-                    <div class="controls">
-                        <button type="button" class="btn btn-inverse" id="addcategory">Add Category</button>
-                    </div>
+                            <tr><td>
+                            <input type="text" id="cat-af" data-form-field="cat" placeholder="Enter new Category.." class="span8">
+                  </td><td>
+                        <button type="button" class="btn btn-primary" id="addcategory">Add Category</button>
+                     </td></tr></table>
+                     </div>
+               
                 </div>
             </form>
         </div>

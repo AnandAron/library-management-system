@@ -16,6 +16,9 @@ if(document.getElementById('isbn-af').value==""){window.alert("Invalid Data");}
 else{
 client.get('https://www.googleapis.com/books/v1/volumes?q=isbn:'+document.getElementById('isbn-af').value, function(response) {
 	var res=JSON.parse(response);
+
+	console.log(res);
+    if(res.totalItems!=0){
 	var i=0;
 	var auth="";	
 	for (i=0;i<res.items[0].volumeInfo.authors.length;i++){
@@ -26,7 +29,9 @@ client.get('https://www.googleapis.com/books/v1/volumes?q=isbn:'+document.getEle
 	document.getElementById("author-af").value=auth;
 document.getElementById("title-af").value=res.items[0].volumeInfo.title;
 document.getElementById("desc-af").value=res.items[0].volumeInfo.description;
-    
+    }
+    else{ window.alert('Details Not Found for this ISBN');}
+
 });
 }
 }
@@ -67,7 +72,7 @@ $(document).ready(function(){
     });
 
     $(document).on("click","#addbooks",function(){
-
+	console.log("Posting!!")
         var form = $(this).parents('form'),
             module_body = $(this).parents('.module-body'),
             sendJSON ={},
@@ -89,7 +94,7 @@ $(document).ready(function(){
         }
         
         if(send_flag == true){
-
+		
             $.ajax({
                 type : 'POST',
                 data : {
@@ -122,3 +127,27 @@ $(document).ready(function(){
     loadResults();
 
 });
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}

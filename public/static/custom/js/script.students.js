@@ -14,9 +14,13 @@ function loadResults(){
                 table.html('<tr><td colspan="99">No Students for these filters</td></tr>');
             } else {
                 table.html('');
+               var count=0;
                 for (var student in data) {
+                    count++;
                     table.append(default_tpl(data[student]));
                 }
+                document.getElementById('num_of_students').innerHTML="Number of students: "+count;
+           
             }
         },
         beforeSend : function(){

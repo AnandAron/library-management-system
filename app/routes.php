@@ -66,21 +66,52 @@ Route::group(array('before' => 'guest'), function() {
 
 // Main books Controlller left public so that it could be used without logging in too
 Route::resource('/books', 'BooksController');
+Route::resource('/books/delete', 'BooksController');
 Route::resource('/category', 'CategoryController');
 
 // Authenticated group 
 Route::group(array('before' => 'auth'), function() {
+    //Delete Books
+    Route::get('/delete-book/{id}',array(
+        'as'    => 'delete-book',
+        'uses'  => 'BooksController@destroy'
+    )); 
+    // Reports
+    Route::get('/report', array(
+        'as' => 'report',
+        'uses' => 'HomeController@renderReport'
+    ));
 
+    //Download report
+    Route::get('/get-book-report', 'HomeController@getBookReport');
+    Route::get('/get-student-report', 'HomeController@getStudentReport');
+    Route::get('/get-issue-report', 'HomeController@getIssueLogReport');
 	// Home Page of Control Panel
 	Route::get('/',array(
 		'as' 	=> 'home',
-		'uses'	=> 'HomeController@home'
+		'uses'	=> 'LogController@renderIssueReturn'
 	));	
 
+    // Issue Logs
+    Route::get('/search-db', array(
+        'as' => 'search-db',
+        'uses' => 'HomeController@home'
+    ));
 	// Render Add Books panel
     Route::get('/add-books', array(
         'as' => 'add-books',
         'uses' => 'BooksController@renderAddBooks'
+    ));
+
+	Route::get('/test', array(
+        'as' => 'test',
+        'uses' => 'TestController@testFunction'
+    ));
+	
+	// Render Add Books panel
+    Route::get('/delete-books', array(
+        'as' => 'delete-books',
+        'uses' => 'BooksController@renderDeleteBooks'
     ));
 
 	// Render All Books panel
@@ -104,11 +135,6 @@ Route::group(array('before' => 'auth'), function() {
     // Main students Controlller resource
     Route::resource('/student', 'StudentController');
 
-    // Issue Logs
-    Route::get('/issue-return', array(
-        'as' => 'issue-return',
-        'uses' => 'LogController@renderIssueReturn'
-    ));
 
     // Render logs panel
     Route::get('/currently-issued', array(
@@ -124,7 +150,11 @@ Route::group(array('before' => 'auth'), function() {
         'as' => 'add-category',
         'uses' => 'BooksController@renderAddCategory'
     ));
-
+    //Delete Category
+ Route::get('delete-category/{id}',array(
+        'as'=>'delete-category',
+        'uses'=>'CategoryController@destroy'
+    ));
 
 	// Sign out (GET) 
     Route::get('/sign-out', array(

@@ -8,7 +8,33 @@
                 <b>Automated Library Management System</b>
             </button>
         </div>
-
+        <table class="table table-striped table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>No. of Books</th>
+                        <th>Last ID</th>
+                        
+                    </tr>
+                    
+                </thead>
+                <tbody >
+                {{$i=0}}
+                @foreach($categories_list as $category)
+                       
+                        <tr class="text-center">
+                        
+                        <td>{{json_encode($data[$i][1])}}</td>
+                        <td>{{json_encode($data[$i][0])}}</td>
+                        <td>{{json_encode($data[$i][2])}}</td>
+                            {{$i++;}}
+                    </tr>
+                    @endforeach
+                    
+                   
+                </tbody>
+            </table>
+            </br></br>
         <div class="btn-box-row row-fluid">
             <button class="btn-box big span4 homepage-form-box" id="findbookbox">
                 <i class="icon-list"></i>
@@ -97,7 +123,8 @@
 @section('custom_bottom_script')
 <script type="text/javascript">
     var branches_list = {{ json_encode($branch_list) }};
-	var categories_list = {{ json_encode($categories_list) }}
+	var categories_list = {{ json_encode($categories_list) }};
+    var data={{json_encode($data)}};
 </script>
 
 <script type="text/javascript" src="{{ Config::get('view.custom.js') }}/script.mainpage.js"></script>

@@ -95,7 +95,7 @@ class CategoryController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		
 	}
 
 

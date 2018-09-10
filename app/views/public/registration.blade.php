@@ -26,7 +26,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls row-fluid">
-								<input class="span4" type="number" placeholder="Roll number" name="rollnumber" value="{{ Input::old('rollnumber') }}" /> 								
+								<input class="span4" type="alpha|number" placeholder="Roll number" name="rollnumber" value="{{ Input::old('rollnumber') }}" /> 								
 								<select class="span4" style="margin-bottom: 0;" name="branch">
 									@foreach($branch_list as $branch)
 				                        <option value="{{ $branch->id }}">{{ $branch->branch }}</option>

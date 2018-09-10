@@ -15,7 +15,7 @@
                     @foreach($branch_list as $branch)
                         <option value="{{ $branch->id }}">{{ $branch->branch }}</option>
                     @endforeach
-                </select>
+                </select><div id="num_of_students"></div>
                 
             </div>
             <table class="table table-striped table-bordered table-condensed">

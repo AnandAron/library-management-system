@@ -14,20 +14,20 @@
                 <div class="control-group">
                     <label class="control-label">Student ID</label>
                     <div class="controls">
-                        <input type="number" data-form-field="student-issue-id" placeholder="Enter the student code here" class="span8">
+                        <input type="alpha|number" data-form-field="student-issue-id" placeholder="Enter the student code here" class="span8">
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label">Book ID</label>
                     <div class="controls">
-                        <input type="number" data-form-field="book-issue-id" placeholder="Enter the book code here" class="span8">
+                        <input type="alpha|number" data-form-field="book-issue-id" placeholder="Enter the book code here" class="span8">
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls">
-                        <button type="button" class="btn btn-inverse" id="issuebook">Issue Book</button>
+                        <button type="button" class="btn btn-primary" id="issuebook">Issue Book</button>
                     </div>
                 </div>
             </form>
@@ -43,13 +43,13 @@
                 <div class="control-group">
                     <label class="control-label">Book ID</label>
                     <div class="controls">
-                        <input type="number" data-form-field="book-issue-id" placeholder="Enter the book code here" class="span8">
+                        <input type="alpha|number" data-form-field="book-issue-id" placeholder="Enter the book code here" class="span8">
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls">
-                        <button type="button" class="btn btn-inverse" id="returnbook">Return Book</button>
+                        <button type="button" class="btn btn-primary" id="returnbook">Return Book</button>
                     </div>
                 </div>
             </form>

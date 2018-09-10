@@ -218,8 +218,18 @@ class BooksController extends \BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
-		//
+	{	
+		$count=Books::select('title')->where('book_id','=',$id)->count();
+		if($count == 0){ return "Invalid ID";}
+			else{
+				$available=Issue::select('available_status')->where('issue_id','=',$id)->first();
+				if(!$available){return "Book is not returned.Can't Delete";}
+				Issue::destroy($id);
+				Books::destroy($id);
+				return "Book Deleted!";
+			}
+		
+
 	}
 
 
@@ -227,6 +237,12 @@ class BooksController extends \BaseController {
         $db_control = new HomeController();
 
         return View::make('panel.addbook')
+            ->with('categories_list', $db_control->categories_list);
+    }
+	public function renderDeleteBooks() {
+        $db_control = new HomeController();
+
+        return View::make('panel.deletebook')
             ->with('categories_list', $db_control->categories_list);
     }
 

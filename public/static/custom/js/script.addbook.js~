@@ -16,6 +16,7 @@ if(document.getElementById('isbn-af').value==""){window.alert("Invalid Data");}
 else{
 client.get('https://www.googleapis.com/books/v1/volumes?q=isbn:'+document.getElementById('isbn-af').value, function(response) {
 	var res=JSON.parse(response);
+	console.log(res);
 	var i=0;
 	var auth="";	
 	for (i=0;i<res.items[0].volumeInfo.authors.length;i++){
@@ -89,7 +90,7 @@ $(document).ready(function(){
         }
         
         if(send_flag == true){
-
+		console.log("Posting!!")
             $.ajax({
                 type : 'POST',
                 data : {
@@ -122,3 +123,45 @@ $(document).ready(function(){
     loadResults();
 
 });
+
+function deleteBook(){
+
+
+	 
+            var sendJSON ={};
+            var send_flag = true;
+          
+		sendJSON.book_id = document.getElementById('del-book-id').value;
+
+
+        if(sendJSON.book_id == ""){
+            module_body.prepend(templates.alert_box( {type: 'danger', message: 'Book Details Not Complete'} ));
+            send_flag = false;
+        }
+
+
+		if(send_flag == true){
+			$.ajax({
+                type : 'POST',
+                data : {
+                    delete_book_data : JSON.stringify(sendJSON)
+                },
+                url : config.path.ajax + '/books/delete',
+                success: function(data) {                    
+                    module_body.prepend(templates.alert_box( {type: 'success', message: data} ));
+				document.getElementById("author-af").value="";
+                },
+                error: function(xhr,status,error){
+                    var err = eval("(" + xhr.responseText + ")");
+                    module_body.prepend(templates.alert_box( {type: 'danger', message: err.error.message} ));
+                },
+                beforeSend: function() {
+                    form.css({'opacity' : '0.4'});
+                },
+                complete: function() {
+                    form.css({'opacity' : '1.0'});
+                }
+            });
+
+
+}

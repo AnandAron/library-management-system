@@ -94,9 +94,17 @@ class CategoryController extends \BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
-		//
+	{	$count=Books::select('category_id')->where('category_id','=',$id)->count();
+		if($count!=0){
+		return "Category contains books. Cant be deleted!!";}
+	else if ($count==0){
+		Categories::destroy($id);
+    $db_control = new HomeController();
+
+        return View::make('panel.addcategory')
+	->with('categories_list', $db_control->categories_list);}
 	}
+
 
 
    
